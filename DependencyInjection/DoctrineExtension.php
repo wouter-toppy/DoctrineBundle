@@ -512,7 +512,7 @@ class DoctrineExtension extends AbstractDoctrineExtension
         }
 
         $container
-            ->setDefinition(sprintf('doctrine.orm.%s_entity_manager', $entityManager['name']), new ChildDefinition('doctrine.orm.entity_manager.abstract'))
+            ->setDefinition(sprintf('doctrine.orm.%s_entity_manager', $entityManager['name']), new ChildDefinition(sprintf('doctrine.orm.%s_entity_manager.abstract', $entityManager['name'])))
             ->setPublic(true)
             ->setArguments([
                 new Reference(sprintf('doctrine.dbal.%s_connection', $entityManager['connection'])),
